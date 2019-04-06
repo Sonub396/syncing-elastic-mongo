@@ -1,2 +1,4 @@
 config.json
 *.pyc
+sync2.py
+connect2.py
