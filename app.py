@@ -11,6 +11,8 @@ from threading import Timer
 
 from utils import sync,connect
 
+# from utils import sync2,connect2
+
 # change path of config file if required
 # print(sys.path)
 filepath = 'config.json'
@@ -26,12 +28,15 @@ sched = BlockingScheduler()
 def job():
     print("Syncing....")
     sched.add_job(sync.main, 'interval', seconds = sec)
+#     sched.add_job(sync2.main, 'interval', seconds = sec)
     sched.start()
     
 
 thread1 = threading.Thread(target=job,name="thread1")
 
 thread2 = threading.Thread(target=connect.main,name="thread2")
+
+# thread2 = threading.Thread(target=connect2.main,name="thread2")
 
 thread1.start()
 thread2.start()
